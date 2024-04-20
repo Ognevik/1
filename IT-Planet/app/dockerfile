@@ -1,0 +1,16 @@
+# Выбор базового образ Python
+        FROM python:latest
+
+# Открываем порт 5000 контейнера
+        EXPOSE 5000
+
+# Установим зависимости Flask
+        WORKDIR /app
+        COPY requirements.txt .
+        RUN pip install -r requirements.txt
+
+# Копируем файлы проекта в контейнер
+        COPY . .
+
+# Запускаем Flask-приложение в контейнере
+        CMD python /app/app.py
